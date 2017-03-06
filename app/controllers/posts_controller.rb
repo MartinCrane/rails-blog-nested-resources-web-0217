@@ -1,11 +1,13 @@
 class PostsController < ApplicationController
   before_action :set_post, only: [:show, :edit, :update, :destroy]
 
+
   def index
     @posts = Post.all
   end
 
   def show
+    @comment = Comment.new
   end
 
   def new
@@ -30,6 +32,7 @@ class PostsController < ApplicationController
   end
 
   def update
+
     respond_to do |format|
       if @post.update(post_params)
         format.html { redirect_to @post, notice: 'Post was successfully updated.' }
@@ -42,6 +45,8 @@ class PostsController < ApplicationController
   end
 
   def destroy
+
+
     @post.destroy
     respond_to do |format|
       format.html { redirect_to posts_url }
